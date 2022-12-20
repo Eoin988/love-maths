@@ -31,7 +31,9 @@ function runGame(gameType){
         throw `Unkown game type: ${gameType} Aborting!`;
     }
 }
-
+/**
+ * Compare answer
+ */
 function checkAnswer(){
 
     let userAnswer = parseInt(document.getElementById("answer-box").value);
@@ -40,8 +42,10 @@ function checkAnswer(){
 
     if (isCorrect) {
         alert("Hey! You got it right! :D");
+        incrementScore();
     } else {
         alert(`You answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}`);
+        incrementWrongAnswer();
     }
 
     runGame(calculatedAnswer[1]);
@@ -62,12 +66,21 @@ function calculateCorrectAnswer(){
         throw `Unimplemented operator ${operator}. Aborting!`;
     }
 }
-
+/**
+ * count pass
+ */
 function incrementScore(){
+   let oldScore = parseInt(document.getElementById("score").innerText);
+   document.getElementById("score").innerText = ++oldScore;
 
 }
-
+/**
+ * count Fail
+ */
 function incrementWrongAnswer(){
+
+    let oldScore = parseInt(document.getElementById("incorrect").innerText);
+   document.getElementById("incorrect").innerText = ++oldScore;
 
 }
 
